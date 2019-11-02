@@ -1,2 +1,8 @@
-# matrix-multiplication
-I need a program doing matrix multiplication for some classes
+# Matrix multiplication in C++
+
+## How to build
+
+    cd build
+    cmake ..
+    make
+    cd ../dist # executables should be here
