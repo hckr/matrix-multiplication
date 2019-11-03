@@ -1,8 +1,10 @@
+#pragma once
+
 #include <istream>
 #include <ostream>
-#include <cstring>
+#include <iomanip>
 
-struct Matrix {
+class Matrix {
     unsigned num_rows;
     unsigned num_cols;
 
@@ -15,7 +17,7 @@ public:
     }
 
     unsigned numCols() const {
-        return num_rows;
+        return num_cols;
     }
 
     double *getArray() const {
@@ -53,12 +55,25 @@ public:
         }
     }
 
+    bool operator==(const Matrix &other) {
+        for (unsigned r = 0; r < num_rows; ++r) {
+            for (unsigned c = 0; c < num_cols; ++c) {
+                if (data[r * num_cols + c] != other.data[r * num_cols + c]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     void stream(std::ostream &output) {
         output << num_rows << " ";
         output << num_cols << "\n";
         for (unsigned r = 0; r < num_rows; ++r) {
             for (unsigned c = 0; c < num_cols; ++c) {
-                output << data[r * num_cols + c] << " ";
+                // TODO: this should probably be configurable; plus it's slowing the program down ~15%
+                output << std::fixed << std::setw(21) << std::setprecision(10) << std::setfill(' ')
+                       << data[r * num_cols + c] << " ";
             }
             output << "\n";
         }
@@ -69,9 +84,10 @@ public:
     }
 
 private:
+
     void failOnStreamError(std::istream &input) {
         if (!input) {
-            throw std::runtime_error("Error in input data.");
+            throw std::runtime_error("Input error");
         }
     }
 };

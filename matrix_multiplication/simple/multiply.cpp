@@ -1,13 +1,6 @@
-#include <iostream>
 #include "../Matrix.hpp"
 
-Matrix multiply(const Matrix &m1, const Matrix &m2) {
-    if (m1.numCols() != m2.numRows()) {
-        throw std::runtime_error("Matrices can't be multiplied: dimensions don't match.");
-    }
-
-    Matrix result(m1.numRows(), m2.numCols());
-
+void multiply(const Matrix &m1, const Matrix &m2, Matrix &result) {
     auto m1a = m1.getArray();
     auto m2a = m2.getArray();
     auto ra = result.getArray();
@@ -21,16 +14,4 @@ Matrix multiply(const Matrix &m1, const Matrix &m2) {
             ra[r * result.numCols() + c] = sum;
         }
     }
-
-    return result;
-}
-
-int main(int argc, char const *argv[])
-{
-    Matrix matrix1(std::cin);
-    Matrix matrix2(std::cin);
-
-    multiply(matrix1, matrix2).stream(std::cout);
-
-    return 0;
 }
