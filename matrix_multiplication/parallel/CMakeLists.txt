@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(matrix_multiplication_omp_parallel_for)
+project(matrix_multiplication_parallel)
 
 set(RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/dist")
 

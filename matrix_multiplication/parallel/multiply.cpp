@@ -1,13 +1,13 @@
-#include <omp.h>
-
 #include "../Matrix.hpp"
+#include <iostream>
+#include <omp.h>
 
 void multiply(const Matrix &m1, const Matrix &m2, Matrix &result) {
     auto m1a = m1.getArray();
     auto m2a = m2.getArray();
     auto ra = result.getArray();
 
-    #pragma omp parallel for
+#pragma omp parallel for
     for (unsigned r = 0; r < result.numRows(); ++r) {
         for (unsigned c = 0; c < result.numCols(); ++c) {
             double sum = 0;
