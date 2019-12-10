@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include <time.h>
+#include <chrono>
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -44,11 +44,14 @@ int main(int argc, char const *argv[]) {
 
     Matrix result(first->numRows(), second->numCols());
 
-    clock_t start = clock();
+    auto start = std::chrono::high_resolution_clock::now();
 
     multiply(*first, *second, result);
 
-    std::cerr << "Multiplication took " << ((float)start) / CLOCKS_PER_SEC << " s.\n";
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end - start;
+
+    std::cerr << "Multiplication took " << diff.count() << " s.\n";
 
     if (std::string(argv[3]) == "-") {
         result.stream(std::cout);
