@@ -17,6 +17,8 @@ for (unsigned r = 0; r < result.numRows(); ++r) { // first loop
 
 ## Intel Core i5-4210U CPU @ 1.70GHz, 7.7 GiB RAM
 
+_To be honest, variance is quite high, but parallel first loop gives mostly better results._
+
 ### Parallel first loop
 
 matrix size | sequential | 2 | 4 | 8 | 16
