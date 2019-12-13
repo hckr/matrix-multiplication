@@ -1,5 +1,4 @@
 #include "../Matrix.hpp"
-#include <iostream>
 #include <omp.h>
 
 void multiply(const Matrix &m1, const Matrix &m2, Matrix &result) {
