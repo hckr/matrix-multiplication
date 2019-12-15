@@ -11,4 +11,4 @@ cd ../dist # executables should be here
 ```
 
 ## Time comparison
-See some [tables here](RESULTS.md).
+See some [tables here](RESULTS.md) or [report in Polish](REPORT.md).
